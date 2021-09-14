@@ -28,7 +28,7 @@ function SlideShow() {
             body:"Epsom Lorem ipsum dolor sit amet, consectetur adipiscing elit. The graphic designer uses this text as an element of composition to fill the page and present the initial appearance and overall shape of the custom design, to graphically represent the type and size of the font and the appearance of the text."
         },
     ])
-    
+
     return (
         <div>
             <Carousel autoPlay={true} showThumbs={false} showStatus={false}>
