@@ -2,7 +2,7 @@ import './App.css';
 import Haeder from './components/navbar/Haeder';
 import SlideShow from './components/SlideShow/SlideShow';
 import ProductsSliders from './components/ProductsSlider/ProductsSliders';
-import AllProducts from './components/AllProducts/AllProducts';
+import FeaturedProducts from './components/FeaturedProducts/FeaturedProducts';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Haeder/>
       <SlideShow/>
       <ProductsSliders/>
-      <AllProducts/>
+      <FeaturedProducts/>
     </div>
   );
 }
