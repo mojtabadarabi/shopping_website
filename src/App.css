@@ -1,0 +1,33 @@
+body{
+    direction: rtl;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #EAEEF8;
+  }
+  ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: right;
+
+  }
+  li{
+    margin: auto 8px;
+  }
+  a,a:hover{
+    text-decoration: none;
+    color: black;
+    transition: all ease .4s;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

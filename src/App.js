@@ -1,17 +1,15 @@
 import './App.css';
-import Haeder from './components/navbar/Haeder';
-import SlideShow from './components/SlideShow/SlideShow';
-import ProductsSliders from './components/ProductsSlider/ProductsSliders';
-import FeaturedProducts from './components/FeaturedProducts/FeaturedProducts';
+import ShopWeb from './components/Containers/ShopWeb';
+import Layout from './components/Theme/Layout'
+import {BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <div >
-      <Haeder/>
-      <SlideShow/>
-      <ProductsSliders/>
-      <FeaturedProducts/>
-    </div>
+      <Layout>
+        <BrowserRouter>
+          <ShopWeb/>
+        </BrowserRouter>
+      </Layout>
   );
 }
 
