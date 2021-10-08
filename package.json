@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "clsx": "^1.1.1",
     "jss": "^10.8.0",
     "jss-rtl": "^0.3.0",
     "material-ui": "^0.20.2",

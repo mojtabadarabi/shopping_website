@@ -5,20 +5,56 @@ export default makeStyles(theme => ({
         width:"100%",
         padding:"60px",
         textAlign:"center",
-        placeContent:"center"
+        placeContent:"center",
+        margin:"0"
     },
     cardContainer:{
         transition:"all ease .4s",
-        cursor:"pointer",
+        margin:"10px",
         '&:hover':{
-            marginTop:"-10px"
-        }
+            transform: 'translateY(-10px)',
+        },
+        '& img':{
+            transition:"all ease .4s",
+            zIndex:"-1",
+            '&:hover':{
+                transform: 'scale(1.2)',
+            },
+    
+        },
+        
     },
-    media:{
-        '&hover':{
-            transform: 'translate(14px, 17px) scale(1)'
-        }
+    mediaContainer:{
+        overflow:"hidden"
+    },
+    
+    discountcontainer:{
+        width:"100%",
+        textAlign:"center",
+        placeContent:"right",
+        backgroundColor:"crimson",
+        margin:"0"
+        
 
+    },
+    discount:{
+        opacity:".7",
+        textDecoration:"line-through"
+    },
+    price:{
+        fontWeight:"700",
+    },
+    discountBadge:{
+        margin:"auto 25px"
+    },
+    discountContainer:{
+        display:"flex",
+        placeContent:"center",
+        margin:"5px"
+    },
+    cardActionContainer:{
+        display:'flex',
+        justifyContent:"space-between"
     }
     
   
