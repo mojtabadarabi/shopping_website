@@ -29,7 +29,7 @@ export default makeStyles(theme => ({
     inputTxt:{
         border:'none',
         padding:"8px",
-        fontWeight:"800",
+        fontWeight:"600",
         backgroundColor:"#E4FAFF",
         borderRadius:"8px",
         margin:"15px ",

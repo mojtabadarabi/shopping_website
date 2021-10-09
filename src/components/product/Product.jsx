@@ -26,7 +26,7 @@ function Product({product}) {
             />
 
           </div>
-          <CardContent>
+          <CardContent className={classes.contentContainer}>
             <Typography className={classes.description} variant="body2" color="text.secondary">
               {product.description}
             </Typography>
@@ -47,6 +47,12 @@ function Product({product}) {
             }
           </CardContent>
           <CardActions className={classes.cardActionContainer}>
+          <Button variant="contained" color='primary'>
+                  <Typography className={classes.price} variant="body2" color="text.secondary">
+              افزودن به سبد خرید    
+                    
+                  </Typography>
+            </Button>
             <Box>
               <IconButton aria-label="add to favorites">
                 <FavoriteIcon />
@@ -56,12 +62,7 @@ function Product({product}) {
               </IconButton>
 
             </Box>
-            <Button variant="contained" color='primary'>
-                  <Typography className={classes.price} variant="body2" color="text.secondary">
-              افزودن به سبد خرید    
-                    
-                  </Typography>
-            </Button>
+            
           </CardActions>
         </Card>
       );

@@ -2,6 +2,7 @@ import { Grid } from '@material-ui/core'
 import React, { useState } from 'react'
 import Product from './Product'
 import useStyle from './style'
+import SliderContainer from "../Slider/SliderContainer"
 
 function DiscountedProducts() {
     const classes = useStyle()
@@ -15,21 +16,63 @@ function DiscountedProducts() {
             discountedPrice:"160 تومان"
         },
         {
-            id:0,
+            id:1,
             title:"گوشی موبایل apple",
             description:"موبایل برند اپل 11",
             price:"200 تومان",
             discountedPrice:"160 تومان"
         },
         {
-            id:0,
+            id:2,
             title:"گوشی موبایل apple",
             description:"موبایل برند اپل 11",
             price:"200 تومان",
             discountedPrice:"160 تومان"
         },
         {
-            id:0,
+            id:3,
+            title:"گوشی موبایل apple",
+            description:"موبایل برند اپل 11",
+            price:"200 تومان",
+            discountedPrice:"160 تومان"
+        },
+        {
+            id:4,
+            title:"گوشی موبایل apple",
+            description:"موبایل برند اپل 11",
+            price:"200 تومان",
+            discountedPrice:"160 تومان"
+        },
+        {
+            id:5,
+            title:"گوشی موبایل apple",
+            description:"موبایل برند اپل 11",
+            price:"200 تومان",
+            discountedPrice:"160 تومان"
+        },
+        {
+            id:6,
+            title:"گوشی موبایل apple",
+            description:"موبایل برند اپل 11",
+            price:"200 تومان",
+            discountedPrice:"160 تومان"
+        },
+        {
+            id:7,
+            title:"گوشی موبایل apple",
+            description:"موبایل برند اپل 11",
+            price:"200 تومان",
+            discountedPrice:"160 تومان"
+        },
+        {
+            id:8,
+            title:"گوشی موبایل apple",
+            description:"موبایل برند اپل 11",
+            price:"200 تومان",
+            discountedPrice:"160 تومان"
+        },
+        {
+            id:9,
             title:"گوشی موبایل apple",
             description:"موبایل برند اپل 11",
             price:"200 تومان",
@@ -37,16 +80,23 @@ function DiscountedProducts() {
         },
     ])
 
+    var settings = {
+        dots: false,
+        infinite: true,
+        speed: 200,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows:true,
+        rtl:true
+      };
     return (
-        <Grid container spacing={2} className={classes.discountcontainer}>
-            {
-                discountProducts.map(product=>(
-                    <Grid item lg={3} md={4} sm={6} xs={12}>
-                        <Product key={product.id} product={product}/>
-                    </Grid>
-                ))
-            }
-        </Grid>
+            <SliderContainer classInfo={'productSliderContainer'} settings={settings}>
+                    {
+                        discountProducts.map(product=>(
+                            <Product key={product.id} product={product}/>
+                        ))
+                    }
+            </SliderContainer>
     )
 }
 

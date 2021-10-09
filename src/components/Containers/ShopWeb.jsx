@@ -5,6 +5,7 @@ import MainPage from '../MainPage/MainPage'
 import Login from '../login/Login'
 import Register from '../register/Register'
 import AllProducts from '../product/AllProducts'
+import About from '../about/About'
 
 function ShopWeb() {
     return (
@@ -14,6 +15,7 @@ function ShopWeb() {
                 <Route path='/login' exact component={Login}/>
                 <Route path='/register' exact component={Register}/>
                 <Route path='/products' exact component={AllProducts}/>
+                <Route path='/about' exact component={About}/>
             </Switch>
         </MainLayout>
     )

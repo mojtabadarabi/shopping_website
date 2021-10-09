@@ -5,8 +5,9 @@ export default makeStyles(theme => ({
         width:"100%",
         padding:"60px",
         textAlign:"center",
-        placeContent:"center",
-        margin:"0"
+        placeContent:"end",
+        margin:"0",
+        direction:"rtl"
     },
     cardContainer:{
         transition:"all ease .4s",
@@ -25,7 +26,11 @@ export default makeStyles(theme => ({
         
     },
     mediaContainer:{
-        overflow:"hidden"
+        overflow:"hidden",
+        userSelect:"none",
+    },
+    contentContainer:{
+        userSelect:"none",
     },
     
     discountcontainer:{
@@ -33,9 +38,11 @@ export default makeStyles(theme => ({
         textAlign:"center",
         placeContent:"right",
         backgroundColor:"crimson",
-        margin:"0"
+        margin:"0",
         
-
+    },
+    discountCard:{
+        maxWidth:"200px !important"
     },
     discount:{
         opacity:".7",
@@ -43,6 +50,7 @@ export default makeStyles(theme => ({
     },
     price:{
         fontWeight:"700",
+ 
     },
     discountBadge:{
         margin:"auto 25px"

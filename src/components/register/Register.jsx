@@ -20,8 +20,8 @@ function Register() {
                 <Typography variant="subtitle2">
                     با ثبت نام در سایت  ، از مزایا بهره مند شوید 
                </Typography>
-                <input className={classes.inputTxt} type="text"placeholder='نام' />
-                <input className={classes.inputTxt} type="text"placeholder='نام کاربری یا ایمیل' />
+                <input className={classes.inputTxt} type="text" spellCheck='false' placeholder='نام' />
+                <input className={classes.inputTxt} type="text" spellCheck='false' placeholder='نام کاربری یا ایمیل' />
                 <input className={classes.inputTxt} type="number"placeholder='شماره همراه   ' />
                 <input className={classes.inputTxt} type="password"placeholder='رمز عبور' />
                 <button className={classes.submitBtn} type="submit">ورود</button>

@@ -20,7 +20,7 @@ function Login() {
                 <Typography variant="subtitle2">
                     با ورود به حساب کاربری خود ، از مزایای کاربران سایت بهره مند شوید 
                </Typography>
-                <input className={classes.inputTxt} type="text"placeholder='نام کاربری یا ایمیل' />
+                <input className={classes.inputTxt} spellCheck='false' type="text"placeholder='نام کاربری یا ایمیل' />
                 <input className={classes.inputTxt} type="password"placeholder='رمز عبور' />
                 <button className={classes.submitBtn} type="submit">ورود</button>
             </form>
