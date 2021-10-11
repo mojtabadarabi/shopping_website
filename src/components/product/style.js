@@ -9,6 +9,10 @@ export default makeStyles(theme => ({
         margin:"0",
         direction:"rtl"
     },
+    textContainer:{
+        margin:"0 auto ",
+        direction:"ltr"
+    },
     cardContainer:{
         transition:"all ease .4s",
         margin:"10px",

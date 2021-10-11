@@ -1,11 +1,16 @@
 
 import { CardMedia, Typography } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect } from 'react'
 import useStyle from './style'
 import loginImage from '../../assets/images/login.png'
+import { useContextValue } from '../../context/ContextProvider'
 
 function Login() {
         const classes = useStyle()
+        const state = useContextValue()
+        useEffect(() => {
+            console.log(state)
+        }, [])
         return (
             <form className={classes.formContainer}>
                 <Typography variant="h3">

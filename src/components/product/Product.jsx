@@ -27,16 +27,16 @@ function Product({product}) {
 
           </div>
           <CardContent className={classes.contentContainer}>
-            <Typography className={classes.description} variant="body2" color="text.secondary">
+            <Typography className={classes.description} variant="body2" color="secondary">
               {product.description}
             </Typography>
-            <Typography className={clsx(product.discountedPrice&&classes.discount,classes.price)} variant="body2" color="text.secondary">
+            <Typography className={clsx(product.discountedPrice&&classes.discount,classes.price)} variant="body2" color="secondary">
               {product.price}
             </Typography>
             {
               product.discountedPrice&&(
                 <Box className={classes.discountContainer}>
-                  <Typography className={classes.price} variant="body2" color="text.secondary">
+                  <Typography className={classes.price} variant="body2" color="initial">
                     {product.discountedPrice}
                   </Typography>
                   <Badge color="secondary" badgeContent='10%' className={classes.discountBadge}/>
@@ -48,7 +48,7 @@ function Product({product}) {
           </CardContent>
           <CardActions className={classes.cardActionContainer}>
           <Button variant="contained" color='primary'>
-                  <Typography className={classes.price} variant="body2" color="text.secondary">
+                  <Typography className={classes.price} variant="body2" color="inherit">
               افزودن به سبد خرید    
                     
                   </Typography>

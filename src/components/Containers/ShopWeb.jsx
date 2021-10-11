@@ -1,14 +1,18 @@
 import { Switch ,Route } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MainLayout from './MainLayout'
 import MainPage from '../MainPage/MainPage'
 import Login from '../login/Login'
 import Register from '../register/Register'
 import AllProducts from '../product/AllProducts'
 import About from '../about/About'
+import ContextProvider, { useContextActions, useContextValue } from '../../context/ContextProvider'
+import http from '../../Services/httpServices'
 
 function ShopWeb() {
+
     return (
+
         <MainLayout>
             <Switch>
                 <Route path='/' exact component={MainPage}/>

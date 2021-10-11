@@ -8,6 +8,7 @@ import { jssPreset, StylesProvider, ThemeProvider } from '@material-ui/styles';
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
 function Layout({children}) {
+    
     return (
         <ThemeProvider  theme={customTheme}>
             <StylesProvider jss={jss}>
