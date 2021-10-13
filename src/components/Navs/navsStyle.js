@@ -14,6 +14,7 @@ export default makeStyles(theme => ({
     padding:"8px 20px",
     transition:"all ease .4s",
     borderRadius:"8px",
+    display:"flex",
     '&::before':{
         content: "''",
         position: 'absolute',
@@ -31,6 +32,19 @@ export default makeStyles(theme => ({
             width:"100%"
         },
     },
+    '& svg':{
+      margin:"0 5px",
+      border:"2px solid black",
+      padding:"8px",
+      borderRadius:"50%"
+
+    },
+    btn:{
+      border:"none !important",
+      cursor:"pointer",
+
+    }
+    
 
 
     

@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useStyle from './navsStyle'
-import {Link} from 'react-router-dom'
+import {Link,withRouter} from 'react-router-dom'
+import {isLogin} from '../../utils/user'
+import { useContextValue } from '../../context/ContextProvider'
+import MailOutlineIcon from '@material-ui/icons/Person';
+import { Typography } from '@material-ui/core'
+import AccountMenu from '../menus/AccountMenu'
 
-function TopNavbar() {
+function TopNavbar({location}) {
+    const [openMenu, setopenMenu] = useState(false)
     const classes = useStyle()
-
+    const userIsLogin= isLogin()
+    const {user} = useContextValue()
     return (
         <nav className={classes.NavContainer}>
             <ul>
@@ -24,20 +31,38 @@ function TopNavbar() {
                     </Link>
                 </li>
             </ul>    
-            <ul>
-                <li>
-                    <Link to='/login'  className={classes.link}>
-                    ورود
-                    </Link>
-                </li>
-                <li>
-                    <Link to='/register'  className={classes.link}>
-                    ثبت نام
-                    </Link>
-                </li>
-            </ul>
+                {
+                    userIsLogin?(
+                        <ul>
+                            <li style={{position:"relative"}}>
+                                <button className={classes.btn} onClick={()=>setopenMenu(prevState=>!prevState)}  >
+                                    <Typography variant='h6' className={classes.link}>
+                                    <MailOutlineIcon className={classes.userIcon}/>
+                                    {user.info.name} {'\u00A0'}
+                                    خوش آمدید
+                                    </Typography>
+                                </button>
+                                {openMenu&&<AccountMenu open={openMenu} setOpen={setopenMenu}/>}
+                            </li>
+                        </ul>
+                    ):(
+                        <ul>
+                            <li>
+                                <Link to='/login'  className={classes.link}>
+                                ورود
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/register'  className={classes.link}>
+                                ثبت نام
+                                </Link>
+                            </li>
+                        
+                        </ul>
+                    )
+                }
         </nav>
     )
 }
 
-export default TopNavbar
+export default withRouter(TopNavbar)
