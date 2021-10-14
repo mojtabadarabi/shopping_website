@@ -6,18 +6,27 @@ import registerImage from '../../assets/images/register.png'
 import { useContextActions } from '../../context/ContextProvider'
 import { toast } from 'react-toastify'
 import { withRouter } from 'react-router'
+import { registerUser } from '../../Services/user'
 
 function Register({history}) {
         const classes = useStyle()
         const dispatch = useContextActions()
         const [user, setuser] = useState({name:'',userName:'',phone:'',password:''})
-        function submitRegisterHandler(e) {
+        async function submitRegisterHandler(e) {
             e.preventDefault()
             if(user.name!==''&&user.name!==' '&&user.userName!==''&&user.userName!==' '&&user.phone!==''&&user.phone!==' '&&user.password!==''&&user.password!==' '){
-                const info= {
-                    user,history,setuser
+                dispatch({type:'set_loading',payload:true})
+                const userInfo= await registerUser(user)
+                if (userInfo) {
+                    dispatch({type:'set_loading',payload:false})
+                    toast.success('با موفقیت ثبت نام شدید')
+                    history.push('/login')
+                    setuser({name:'',userName:'',phone:'',password:''})
                 }
-                dispatch({type:'register_user',payload:info})
+                else{
+                    dispatch({type:'set_loading',payload:false})
+                    toast(userInfo)
+                }
             }
             else{
                 toast.error('لطفا فیلد ها را با دقت پر کنید')

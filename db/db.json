@@ -104,6 +104,13 @@
       "phone": "09224501561",
       "password": "123456789",
       "id": 1
+    },
+    {
+      "name": "مهدی دارابی",
+      "userName": "ma.darabdi113@gmail.com",
+      "phone": "09214268676",
+      "password": "987654321",
+      "id": 2
     }
   ]
 }

@@ -15,6 +15,8 @@ export default makeStyles(theme => ({
     transition:"all ease .4s",
     borderRadius:"8px",
     display:"flex",
+    userSelect:"none",
+    cursor:"pointer",
     '&::before':{
         content: "''",
         position: 'absolute',
@@ -39,11 +41,7 @@ export default makeStyles(theme => ({
       borderRadius:"50%"
 
     },
-    btn:{
-      border:"none !important",
-      cursor:"pointer",
-
-    }
+   
     
 
 

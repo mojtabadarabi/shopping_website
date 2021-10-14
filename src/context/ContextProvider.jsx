@@ -15,7 +15,8 @@ const initialState={
       info:{},
       isAuth:false,
   },
-  allproducts:null
+  allproducts:null,
+  loading:false
 }
 const reducer = (state, action) => {
 
@@ -23,23 +24,15 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_ALLPRODUCTS':
       return {...state,allproducts:action.data}
-    case 'register_user':
-      const registerReq = getRegister(action.payload.user)
-      if (registerReq) {
-        toast.success('با موفقیت ثبت نام شد')
-        action.payload.history.push('/login')
-        action.payload.setuser({name:'',userName:'',phone:'',password:''})
-      }
-      return state
     case 'login_user':
       localStorage.setItem('user',JSON.stringify({token:'da6f465ad4f5a4dfadf45a4df',user:[action.payload]}))
       return {...state,user:{info:action.payload,isAuth:true}}
-      
     case 'logut_user':
       console.log(action)
       localStorage.clear()
       return {...state,user:{info:{},isAuth:false}}
-      
+    case 'set_loading':
+      return {...state,loading:action.payload}
     default:
       console.log('default')
       return state

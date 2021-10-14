@@ -15,16 +15,20 @@ function Login({history}) {
         async function submitLoginHandler(e) {
             e.preventDefault()
             if(user.name!==''&&user.name!==' '&&user.userName!==''&&user.userName!==' '&&user.phone!==''&&user.phone!==' '&&user.password!==''&&user.password!==' '){
+                dispatch({type:'set_loading',payload:true})
                 const userInfo= await loginUser(user)
                 if (typeof userInfo!=='string') {
                     dispatch({type:'login_user',payload:userInfo})
-                    toast.success('با موفقیت وارد شدید')
                     history.push('/')
                     setuser({name:'',userName:'',phone:'',password:''})
+                    dispatch({type:'set_loading',payload:false})
+                    toast.success('با موفقیت وارد شدید')
                 }
                 else{
+                    dispatch({type:'set_loading',payload:false})
                     toast(userInfo)
                 }
+                    
             }
             else{
                 toast.error('لطفا فیلد ها را با دقت پر کنید')

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper } from '@material-ui/core';
+import { Box, Button, ButtonBase, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Typography } from '@material-ui/core';
 import { useContextActions } from '../../context/ContextProvider';
 
 export default function AccountMenu({open,setOpen}) {
@@ -24,16 +24,6 @@ export default function AccountMenu({open,setOpen}) {
     dispatch({type:"logut_user"})
   };
 
-  function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === 'Escape') {
-      setOpen(false);
-    }
-  }
-
-  // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -48,9 +38,23 @@ export default function AccountMenu({open,setOpen}) {
       <Paper>
       <ClickAwayListener onClickAway={handleClose}>
         <MenuList style={{flexDirection:"column"}}>
-          <MenuItem style={{placeContent:"center"}}>Profile</MenuItem>
-          <MenuItem style={{placeContent:"center"}}>My account</MenuItem>
-          <MenuItem style={{placeContent:"center"}} onClick={handleLogout}>Logout</MenuItem>
+          <MenuItem style={{placeContent:"center"}}>
+            <Typography variant='subtitle2'>
+              پروفایل
+            </Typography>
+          </MenuItem>
+          <MenuItem style={{placeContent:"center"}}>
+            <Typography variant='subtitle2'>
+              سبد خرید
+            </Typography>
+          </MenuItem>
+          <MenuItem style={{placeContent:"center"}} onClick={handleLogout}>
+              <Button variant='outlined' color='secondary' fullWidth>
+                <Typography variant='subtitle2'>
+                  خروج
+                </Typography>
+              </Button>
+          </MenuItem>
         </MenuList>
 
       </ClickAwayListener>

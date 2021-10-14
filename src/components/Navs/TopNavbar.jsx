@@ -34,14 +34,12 @@ function TopNavbar({location}) {
                 {
                     userIsLogin?(
                         <ul>
-                            <li style={{position:"relative"}}>
-                                <button className={classes.btn} onClick={()=>setopenMenu(prevState=>!prevState)}  >
+                            <li style={{position:"relative"}} onClick={()=>setopenMenu(prevState=>!prevState)}>
                                     <Typography variant='h6' className={classes.link}>
-                                    <MailOutlineIcon className={classes.userIcon}/>
-                                    {user.info.name} {'\u00A0'}
-                                    خوش آمدید
+                                        <MailOutlineIcon className={classes.userIcon}/>
+                                        {user.info.name} {'\u00A0'}
+                                        خوش آمدید
                                     </Typography>
-                                </button>
                                 {openMenu&&<AccountMenu open={openMenu} setOpen={setopenMenu}/>}
                             </li>
                         </ul>
