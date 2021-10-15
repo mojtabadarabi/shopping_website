@@ -20,8 +20,10 @@ export default function AccountMenu({open,setOpen}) {
     setOpen(false);
   };
   const handleLogout = () => {
+    dispatch({type:'set_loading',payload:true})
     setOpen(false);
     dispatch({type:"logut_user"})
+    dispatch({type:'set_loading',payload:false})
   };
 
   const prevOpen = React.useRef(open);

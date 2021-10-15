@@ -22,6 +22,11 @@ export const registerUser = (async(user)=>{
 export const getAllUser = async()=>{
     return await http.get('/users')
 }
+export const getUserFromDb = async(userReq)=>{
+    const {data} = await getAllUser()
+    const findedUser = data.find(user=>user.id===userReq.id)
+    return findedUser
+}
 export const loginUser = (async(userReq)=>{
     try {
         const {data} = await getAllUser()
