@@ -9,6 +9,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import clsx from 'clsx';
 import React from 'react'
+import { Link } from 'react-router-dom';
 import product1 from '../../assets/images/product1.png'
 import useStyle from './style'
 
@@ -47,12 +48,13 @@ function Product({product}) {
             }
           </CardContent>
           <CardActions className={classes.cardActionContainer}>
-          <Button variant="contained" color='primary'>
+            <Link to={`/products/${product.id}`}>
+            <Button variant="contained" color='primary'>
                   <Typography className={classes.price} variant="body2" color="inherit">
-              افزودن به سبد خرید    
-                    
+                    افزودن به سبد خرید    
                   </Typography>
             </Button>
+            </Link>
             <Box>
               <IconButton aria-label="add to favorites">
                 <FavoriteIcon />

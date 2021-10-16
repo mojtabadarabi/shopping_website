@@ -8,13 +8,13 @@
     },
     {
       "id": 1,
-      "title": "گوشی موبایل apple",
+      "title": "گوشی موبایل sumsung",
       "description": "موبایل برند اپل 11",
       "price": "200 تومان"
     },
     {
       "id": 2,
-      "title": "گوشی موبایل apple",
+      "title": "گوشی موبایل nokia",
       "description": "موبایل برند اپل 11",
       "price": "200 تومان"
     },
@@ -111,6 +111,13 @@
       "phone": "09214268676",
       "password": "987654321",
       "id": 2
+    },
+    {
+      "name": "کوثر دارابی",
+      "userName": "ks.darabi113@gmail.com",
+      "phone": "09133868676",
+      "password": "123456789",
+      "id": 3
     }
   ]
 }

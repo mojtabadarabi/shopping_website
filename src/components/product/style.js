@@ -4,10 +4,10 @@ export default makeStyles(theme => ({
     allProductsContainer:{
         width:"100%",
         padding:"60px",
-        textAlign:"center",
-        placeContent:"end",
+        // textAlign:"center",
+        // placeContent:"end",
         margin:"0",
-        direction:"rtl"
+        // direction:"rtl"
     },
     textContainer:{
         margin:"0 auto ",

@@ -10,6 +10,8 @@ import ContextProvider, { useContextActions, useContextValue } from '../../conte
 import http from '../../Services/httpServices'
 import PublicRoute from '../Routes/PublicRoutes'
 import PrivateRoute from '../Routes/PrivateRotue'
+import NotFoundPage from '../notfound/NotFoundPage'
+import ProductInfoPage from '../product/ProductInfoPage'
 
 function ShopWeb() {
 
@@ -17,11 +19,13 @@ function ShopWeb() {
 
         <MainLayout>
             <Switch>
-                <PublicRoute restricted={false} path='/' exact component={MainPage}/>
+                <PublicRoute restricted={false} path='/products/:id' exact component={ProductInfoPage}/>
+                <PublicRoute restricted={false} path='/products' exact component={AllProducts}/>
                 <PublicRoute restricted={true} path='/login' exact component={Login}/>
                 <PublicRoute restricted={true} path='/register' exact component={Register}/>
-                <PublicRoute restricted={false} path='/products' exact component={AllProducts}/>
                 <PublicRoute restricted={false} path='/about' exact component={About}/>
+                <PublicRoute restricted={false} path='/' exact component={MainPage}/>
+                <Route component={NotFoundPage}/>
             </Switch>
         </MainLayout>
     )
