@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardHeader, CardMedia, Divider, Grid, Typography } from '@material-ui/core'
+import { Box, Button, Card, CardHeader, CardMedia, Divider, Grid, Menu, MenuItem, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import http from '../../Services/httpServices'
 import useStyle from './style'
@@ -40,7 +40,10 @@ function ProductInfoPage({match}) {
                             <Button variant='text' color='primary' style={{verticalAlign:"top",paddingTop:"0",fontWeight:"600",fontSize:"15px"}}>24 دیدگاه</Button>
                         </Box>
                         <Box>
-                            {product.description}
+                            {product.properties.map(prop=>(
+                                <MenuItem>{prop}</MenuItem>
+                            ))}
+
                         </Box>
                     </Grid>
                     <Grid item lg={4} md={4} sm={6} xs={12}>
@@ -92,9 +95,21 @@ function ProductInfoPage({match}) {
                                     </Typography>
                                 </Box>
                                 <Box>
-                                    <Typography variant='h6' color='secondary' align='right'>
-                                        {product.price} 
-                                    </Typography>
+                                    <Typography variant='h6' style={!(product.discount===''||product.discount===null)?{textDecoration:'line-through' }:null} color='secondary' align='right'>
+                                        {product.price} تومان
+                                    </Typography> 
+                                    {
+                                        !(product.discount===''||product.discount===null)?(
+                                            <Box>
+                                                <Typography variant='h6' align='right'>
+                                                    {product.discount}%
+                                                </Typography>
+                                                <Typography variant='h6' align='right'>
+                                                    {product.price-((product.price*product.discount)/100)} تومان
+                                                </Typography>
+                                            </Box>
+                                        ):null
+                                    }
                                 </Box>
                             </Box>
                             <Button variant='contained' fullWidth color='primary' style={{margin:"15px 0"}}>
@@ -104,8 +119,11 @@ function ProductInfoPage({match}) {
                     </Grid>
                 </Grid>
                 <Divider/>
-                <Grid container spacing={2} className={classes.allProductsContainer} >
-                    مشخصات کامل کالا
+                <Grid container spacing={2} className={classes.productdescription} >
+                    <pre>
+
+                        {product.description} 
+                    </pre>
                 </Grid>
 
             </React.Fragment>

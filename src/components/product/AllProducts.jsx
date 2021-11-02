@@ -10,8 +10,15 @@ import { getAllProducts } from '../../Services/products'
 function AllProducts() {
     const classes = useStyle()
     const dispatch = useContextActions()
-    const {allproducts}=useContextValue()
-
+    const [allproducts, setallproducts] = useState(null)
+    async function fetch() {
+        const {data}=await getAllProducts()
+        setallproducts(data)
+    }
+    useEffect(() => {
+        fetch()
+    }, [])
+    console.log(allproducts)
     function renderProducts() {
         if (!allproducts) {return <Typography variant='h5' className={classes.textContainer}>در حال بارگذاری ...</Typography>}
         if (allproducts&&allproducts.length===0) {return <Typography variant='h5' className={classes.textContainer}>محصولی موجود نیست</Typography>}

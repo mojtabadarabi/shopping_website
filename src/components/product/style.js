@@ -3,30 +3,36 @@ import { makeStyles } from "@material-ui/core";
 export default makeStyles(theme => ({
     allProductsContainer:{
         width:"100%",
-        padding:"60px",
-        // textAlign:"center",
+        padding:"20px",
+        textAlign:"center",
         // placeContent:"end",
         margin:"0",
         // direction:"rtl"
+    },
+    productdescription:{
+        width:"100%",
+        padding:"20px",
+        textAlign:"left",
+        margin:"0",
     },
     textContainer:{
         margin:"0 auto ",
         direction:"ltr"
     },
+    pricecontainer:{
+        display:"flex",
+        justifyContent:"space-evenly",
+        margin:"8px 0"
+    },
     cardContainer:{
         transition:"all ease .4s",
+        height:"50vh",
+        position:"relative",
         margin:"10px",
         '&:hover':{
             transform: 'translateY(-10px)',
         },
-        '& img':{
-            transition:"all ease .4s",
-            zIndex:"-1",
-            '&:hover':{
-                transform: 'scale(1.2)',
-            },
-    
-        },
+        
         
     },
     mediaContainer:{
@@ -66,6 +72,8 @@ export default makeStyles(theme => ({
     },
     cardActionContainer:{
         display:'flex',
+        position:"absolute",
+        bottom:"0",
         justifyContent:"space-between"
     }
     

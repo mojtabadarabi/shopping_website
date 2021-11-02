@@ -15,46 +15,56 @@ import useStyle from './style'
 
 function Product({product}) {
     const classes = useStyle()
+    console.log(product)
     return (
         <Card className={classes.cardContainer}>
-          <div className={classes.mediaContainer}>
-            <CardMedia
-              component="img"
-              height="194"
-              image={product1}
-              alt="محصول "
-              className={classes.media}
-            />
+          <Link to={`/products/${product.id}`}>
+            <div className={classes.mediaContainer}>
+              <CardMedia
+                component="img"
+                height="194"
+                image={product1}
+                alt="محصول "
+                className={classes.media}
+              />
 
-          </div>
-          <CardContent className={classes.contentContainer}>
-            <Typography className={classes.description} variant="body2" color="secondary">
-              {product.description}
-            </Typography>
-            <Typography className={clsx(product.discountedPrice&&classes.discount,classes.price)} variant="body2" color="secondary">
-              {product.price}
-            </Typography>
-            {
-              product.discountedPrice&&(
-                <Box className={classes.discountContainer}>
-                  <Typography className={classes.price} variant="body2" color="initial">
-                    {product.discountedPrice}
-                  </Typography>
-                  <Badge color="secondary" badgeContent='10%' className={classes.discountBadge}/>
+            </div>
+            <CardContent className={classes.contentContainer}>
+              <Typography className={classes.description} variant="body2" color="primary">
+                {product.title}
+              </Typography>
+              <Box className={classes.pricecontainer}>
+                <Typography className={clsx(product.discountedPrice&&classes.discount,classes.price)} variant="body2" color="primary">
+                  قیمت
+                </Typography>
+                <Typography className={clsx(product.discountedPrice&&classes.discount,classes.price)} variant="body2" color="primary">
+                  {product.price}
+                </Typography>
 
-                </Box>
+              </Box>
+              {
+                product.discount&&(
+                  <Box className={classes.discountContainer}>
+                    <Typography className={classes.price} variant="body2" color="secondary">
+                      {product.price-(product.price*product.discount)/100}
+                    </Typography>
+                    <Badge color="secondary" badgeContent={`${product.discount}%`} className={classes.discountBadge}/>
 
-              )
-            }
-          </CardContent>
+                  </Box>
+
+                )
+              }
+            </CardContent>
+
+          </Link>
           <CardActions className={classes.cardActionContainer}>
-            <Link to={`/products/${product.id}`}>
+            {/* <Link to={`/products/${product.id}`}> */}
             <Button variant="contained" color='primary'>
                   <Typography className={classes.price} variant="body2" color="inherit">
                     افزودن به سبد خرید    
                   </Typography>
             </Button>
-            </Link>
+            {/* </Link> */}
             <Box>
               <IconButton aria-label="add to favorites">
                 <FavoriteIcon />

@@ -6,12 +6,13 @@ const PrivateRoute = ({component: Component, ...rest}) => {
     const state = useContextValue()
     const isLogin=()=>{
         const user = JSON.parse(localStorage.getItem('user'))
-        if (user&&state.user.isAuth) {
+        if (!!user.user.length) {
             return true
         }
         else{
             return false
         }
+        
     }
     return (
 

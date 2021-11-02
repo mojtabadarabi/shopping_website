@@ -11,20 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const dispatch = useContextActions()
   const state = useContextValue()
-  useEffect(() => {
-    // console.log('app')
-    // console.log(state)
-    // setTimeout(async() => {
-    //         try {
-    //             const {data} = await getAllProducts()
-    //             console.log('data')
-    //             console.log(data)
-    //             dispatch({type:"SET_ALLPRODUCTS",data})
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     }, 2000);
-}, [])
 
   return (
     <ContextProvider>

@@ -11,6 +11,7 @@ export default makeStyles(theme => ({
 
   link:{
     position:"relative",
+    placeContent:'center',
     padding:"8px 20px",
     transition:"all ease .4s",
     borderRadius:"8px",
@@ -41,11 +42,43 @@ export default makeStyles(theme => ({
       borderRadius:"50%"
 
     },
-   
-    
-
-
-    
+  },
+  menu:{
+    [theme.breakpoints.down('xs')]: {
+        display:'none',
+    },
+  },
+  menuicon:{
+    padding:"2px !important",
+    cursor:"pointer",
+    display:"none",
+    transition:"all ease .5s",
+    [theme.breakpoints.down('xs')]: {
+      display:"block ",
+  },
+  '&:hover':{
+    color:"red"
+  }
+  },
+  icon:{
+    fontSize:"45px"
+  },
+  userinfo:{
+    margin:"auto"
+  },
+  mainmenu:{
+    position:"absolute",
+    top:"0",
+    left:"0",
+    zIndex:"1001",
+    placeContent:"center",
+    display:"flex",
+    justifyContent:"center",
+    flexDirection:"column",
+    width:"100%",
+    backgroundColor:"#f5f5f5",
+    boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
+    padding:"15px"
   },
   
 }))

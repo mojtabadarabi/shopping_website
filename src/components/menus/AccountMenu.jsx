@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Box, Button, ButtonBase, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Typography } from '@material-ui/core';
 import { useContextActions } from '../../context/ContextProvider';
+import { Link } from 'react-router-dom';
 
 export default function AccountMenu({open,setOpen}) {
     const dispatch = useContextActions()
@@ -42,7 +43,9 @@ export default function AccountMenu({open,setOpen}) {
         <MenuList style={{flexDirection:"column"}}>
           <MenuItem style={{placeContent:"center"}}>
             <Typography variant='subtitle2'>
+              <Link to='/admin'>
               پروفایل
+              </Link>
             </Typography>
           </MenuItem>
           <MenuItem style={{placeContent:"center"}}>
