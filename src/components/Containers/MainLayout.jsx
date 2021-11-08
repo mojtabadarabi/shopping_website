@@ -25,6 +25,7 @@ function MainLayout({children}) {
             if(Object.keys(state.user.info).length === 0){
                 try {
                     const data = await getUserFromDb(userReq)
+                    console.log(data)
                     dispatch({type:"login_user",payload:data})
                 } catch (error) {
                     console.log(error)

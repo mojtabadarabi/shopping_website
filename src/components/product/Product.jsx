@@ -13,11 +13,10 @@ import { Link } from 'react-router-dom';
 import product1 from '../../assets/images/product1.png'
 import useStyle from './style'
 
-function Product({product}) {
+function Product({product,style}) {
     const classes = useStyle()
-    console.log(product)
     return (
-        <Card className={classes.cardContainer}>
+        <Card className={classes.cardContainer} style={style}>
           <Link to={`/products/${product.id}`}>
             <div className={classes.mediaContainer}>
               <CardMedia

@@ -10,13 +10,11 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useStyle from "./style";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
-import { createProduct } from "../../../Services/products";
+import { createProduct, getCategorys } from "../../../Services/products";
 import { toast } from "react-toastify";
-const names = ["لبنیات", "پوشاک", "لوازم التحریر"];
-const empty = ["لطفا دسته بندی محصول را انتخاب کنید"];
 
 function AddProduct() {
   const classes = useStyle();
@@ -28,7 +26,12 @@ function AddProduct() {
   const [discount, setdiscount] = useState(null);
   const [category, setcategory] = useState([]);
   const [price, setprice] = useState(null);
-
+  const [categorys, setcategorys] = useState([]);
+  useEffect(async() => {
+    const data = await getCategorys()
+    console.log(data)
+    setcategorys(data)
+  }, [])
   const handleChange = (event) => {
     const {
       target: { value },
@@ -102,10 +105,10 @@ function AddProduct() {
             renderValue={(selected) => selected.join(" - ")}
             style={{ display: "block" }}
           >
-            {names.map((name) => (
-              <MenuItem key={name} value={name}>
+            {categorys.map((name) => (
+              <MenuItem key={name.id} value={name.name}>
                 <Checkbox checked={category.indexOf(name) > -1} />
-                <ListItemText primary={name} />
+                <ListItemText primary={name.name} />
               </MenuItem>
             ))}
           </Select>

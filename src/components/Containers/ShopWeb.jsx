@@ -16,7 +16,6 @@ import AdminPage from '../Admin/AdminPage'
 import PrivateLayout from '../Layouts/PrivateLayout'
 
 function ShopWeb() {
-
     return (
 
         <Switch>

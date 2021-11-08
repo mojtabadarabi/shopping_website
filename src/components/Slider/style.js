@@ -2,7 +2,10 @@ import { makeStyles } from "@material-ui/core";
 
 export default makeStyles(theme => ({
   sliderContainer:{
-    width:"98%"
+    width:"100%",
+    overflowX:"auto",
+    animation: 'slide 5s infinite',
+    position:'relative',
   },
   productSliderContainer:{
     width:"100%",
@@ -10,6 +13,14 @@ export default makeStyles(theme => ({
     placeContent:"right",
     backgroundColor:"crimson",
     margin:"0",
+  },
+  nextSlide:{
+    
+    backgroundColor:'blue'
+  },
+  prevSlide:{
+    marginLeft:'auto',
+    backgroundColor:'blue'
   },
   headerSliderContainer:{
     width:"100%",
@@ -26,5 +37,16 @@ export default makeStyles(theme => ({
     },
     
   },
+  slide:{
+    
+  },
+  "@keyframes slide ": {
+    "0%": {
+      marginRight: "0(0)"
+    },
+    "100%": {
+      marginRight: "-400px"
+    }
+  }
   
 }))

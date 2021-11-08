@@ -30,8 +30,9 @@ function Header() {
             <Grid item md={7}  xs={12} className={classes.itemContainer} >
               <SliderContainer  settings={settings} classInfo={'headerSliderContainer'}>
                 {
-                  [addImg,addImg2].map(image=>(
+                  [addImg,addImg2].map((image,index)=>(
                       <CardMedia
+                      key={index}
                       component="img"
                       height="100%"
                       image={image}

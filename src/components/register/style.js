@@ -8,7 +8,7 @@ export default makeStyles(theme => ({
         backgroundColor:"#fff",
         margin:"25px auto",
         boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
-        width:"30rem",
+        width: '90%',
         textAlign:"center",
         borderRadius:"8px"
     },

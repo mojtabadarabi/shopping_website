@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,memo} from 'react'
 import useStyle from './mainPageStyles'
 import Header from '../header/Header'
 import AllProducts from '../product/AllProducts'
@@ -7,7 +7,6 @@ import { useContextActions, useContextValue } from '../../context/ContextProvide
 
 function MainPage() {
     const classes = useStyle()
-
     return (
       <main className={classes.mainContainer} >
           <Header/>

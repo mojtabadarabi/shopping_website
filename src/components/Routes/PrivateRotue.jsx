@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useContextValue } from '../../context/ContextProvider';
+import { getUserFromDb } from '../../Services/user';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-    const state = useContextValue()
-    const isLogin=()=>{
-        const user = JSON.parse(localStorage.getItem('user'))
-        if (!!user.user.length) {
+
+    const isLogin=async()=>{
+        const userReq=JSON.parse(localStorage.getItem('user'))
+        if(userReq!==null){
+          try {
+            const data = await getUserFromDb(userReq.user[0])
             return true
-        }
-        else{
+          } catch (error) {
+            console.log(error)
             return false
+          }
         }
         
     }
+
     return (
 
         // Show the component only when the user is logged in

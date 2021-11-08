@@ -1,0 +1,10 @@
+.container{
+    display:inline-flex;
+    overflow:auto;
+    padding:0 15px;
+    width:95%;
+    transition: all ease 1s;
+}
+.btn :focus .container{
+    transform: translateX(10px);
+}

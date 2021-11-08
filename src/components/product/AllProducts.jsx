@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useContextActions, useContextValue } from '../../context/ContextProvider'
 import Product from './Product'
 import useStyle from './style'
-import axios from 'axios'
 import Products from './Products'
 import { getAllProducts } from '../../Services/products'
 
@@ -18,7 +17,6 @@ function AllProducts() {
     useEffect(() => {
         fetch()
     }, [])
-    console.log(allproducts)
     function renderProducts() {
         if (!allproducts) {return <Typography variant='h5' className={classes.textContainer}>در حال بارگذاری ...</Typography>}
         if (allproducts&&allproducts.length===0) {return <Typography variant='h5' className={classes.textContainer}>محصولی موجود نیست</Typography>}

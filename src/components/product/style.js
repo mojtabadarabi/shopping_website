@@ -13,6 +13,7 @@ export default makeStyles(theme => ({
         width:"100%",
         padding:"20px",
         textAlign:"left",
+
         margin:"0",
     },
     textContainer:{
@@ -51,6 +52,14 @@ export default makeStyles(theme => ({
         margin:"0",
         
     },
+    productSliderContainer:{
+        display:'flex',
+        width:"100%",
+        textAlign:"center",
+        placeContent:"right",
+        backgroundColor:"crimson",
+        margin:"0",
+      },
     discountCard:{
         maxWidth:"200px !important"
     },

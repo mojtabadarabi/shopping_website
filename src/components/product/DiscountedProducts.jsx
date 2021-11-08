@@ -1,85 +1,24 @@
-import { Grid } from '@material-ui/core'
-import React, { useState } from 'react'
+import { Box, Grid } from '@material-ui/core'
+import React, { PureComponent, useEffect, useState ,memo, useRef} from 'react'
 import Product from './Product'
 import useStyle from './style'
-import SliderContainer from "../Slider/SliderContainer"
-
-function DiscountedProducts() {
+import { getDiscountedProduct } from '../../Services/products'
+import { Rerousel } from 'rerousel';
+import SliderContainer from '../Slider/SliderContainer'
+import './style.css'
+const DiscountedProducts=() => {
     const classes = useStyle()
-
-    const [discountProducts, setdiscountProducts] = useState([
-        {
-            id:0,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-        {
-            id:1,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-        {
-            id:2,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-        {
-            id:3,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-        {
-            id:4,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-        {
-            id:5,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-        {
-            id:6,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-        {
-            id:7,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-        {
-            id:8,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-        {
-            id:9,
-            title:"گوشی موبایل apple",
-            description:"موبایل برند اپل 11",
-            price:"200 تومان",
-            discountedPrice:"160 تومان"
-        },
-    ])
-
+    const [discountProducts, setdiscountProducts] = useState([])
+    const ref = useRef(null)
+    useEffect(async() => {
+        try{
+            const data = await getDiscountedProduct()
+            setdiscountProducts(data)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }, [])
     var settings = {
         dots: false,
         infinite: true,
@@ -89,14 +28,29 @@ function DiscountedProducts() {
         arrows:true,
         rtl:true
       };
-    return (
-            <SliderContainer classInfo={'productSliderContainer'} settings={settings}>
-                    {
-                        discountProducts.map(product=>(
-                            <Product key={product.id} product={product}/>
-                        ))
-                    }
-            </SliderContainer>
+      function renderProducts() {
+          if(!discountProducts){return <Box>در حال بارگذاری</Box>}
+          if(discountProducts&&discountProducts.length===0){return null}
+          if(discountProducts&&discountProducts.length!==0){return (
+            discountProducts.map(product=>(
+                <Product style={{flex: '0 0 350px'}} key={product.id} product={product}/>
+            )) 
+          )}
+      }
+      function click() {
+          ref.current.style.paddingLeft=`${+500}px`
+      }
+      return (
+          <Box className='container' ref={ref}>
+              <button onClick={()=>click()}>
+                  +
+              </button>
+                {renderProducts()}
+              <button>
+                  -
+              </button>
+          </Box>
+            
     )
 }
 
