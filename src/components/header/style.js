@@ -10,7 +10,6 @@ export default makeStyles(theme => ({
         padding:"6px",
     },
     itemContainer: {
-        height:"400px",
   },
   imgContainer:{
     borderRadius:"8px",
@@ -19,8 +18,15 @@ export default makeStyles(theme => ({
   },
   image:{
       width:"100%",
-      height:"100%",
       borderRadius:"8px",
+  },
+  swipercta :{
+    'img':{
+      'border-radius': '24px',
+      width: '100%',
+      'object-fit': 'cover',
+
+    }
   }
   
 

@@ -8,3 +8,11 @@
 .btn :focus .container{
     transform: translateX(10px);
 }
+.swiper :global(.swiper-slide){
+    display: block;
+    width: auto;
+    margin-right: 8px;
+  }
+  .swiper{
+      background-color: crimson;
+  }

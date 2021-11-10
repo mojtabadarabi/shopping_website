@@ -60,6 +60,7 @@ export default makeStyles(theme => ({
         backgroundColor:"crimson",
         margin:"0",
       },
+      
     discountCard:{
         maxWidth:"200px !important"
     },

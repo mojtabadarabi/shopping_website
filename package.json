@@ -41,6 +41,7 @@
     "react-touch-carousel": "^0.10.2",
     "rerousel": "^0.1.9",
     "slick-carousel": "^1.8.1",
+    "swiper": "^6.8.4",
     "tinycolor2": "^1.4.2",
     "web-vitals": "^1.1.2"
   },
