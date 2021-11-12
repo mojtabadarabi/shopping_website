@@ -14,6 +14,7 @@ import NotFoundPage from '../notfound/NotFoundPage'
 import ProductInfoPage from '../product/ProductInfoPage'
 import AdminPage from '../Admin/AdminPage'
 import PrivateLayout from '../Layouts/PrivateLayout'
+import ProductInfo from '../product/ProductInfo'
 
 function ShopWeb() {
     return (
@@ -26,7 +27,7 @@ function ShopWeb() {
                 </Route>
                 <Route path={['/']}>
                     <MainLayout>
-                        <PublicRoute restricted={false} path='/products/:id' exact component={ProductInfoPage}/>
+                        <PublicRoute restricted={false} path='/products/:id' exact component={ProductInfo}/>
                         <PublicRoute restricted={false} path='/products' exact component={AllProducts}/>
                         <PublicRoute restricted={true} path='/login' exact component={Login}/>
                         <PublicRoute restricted={true} path='/register' exact component={Register}/>

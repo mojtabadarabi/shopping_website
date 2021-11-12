@@ -138,7 +138,7 @@ function ProductInfoPage({match}) {
                     </div>
                ):renderComponent(product)
            }
-            
+                   
         </section>
     )
 }

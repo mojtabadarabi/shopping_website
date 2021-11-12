@@ -5,12 +5,14 @@ export default makeStyles(theme => ({
     padding: '18px',
     display:"flex",
     justifyContent:"space-between",
-    backgroundColor:"#f9f9f9",
+    backgroundColor:"#6200ee",
+
     boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
   },
 
   link:{
     position:"relative",
+    color:'#fff',
     placeContent:'center',
     padding:"8px 20px",
     transition:"all ease .4s",
@@ -43,11 +45,7 @@ export default makeStyles(theme => ({
 
     },
   },
-  menu:{
-    [theme.breakpoints.down('xs')]: {
-        display:'none',
-    },
-  },
+
   menuicon:{
     padding:"2px !important",
     cursor:"pointer",
