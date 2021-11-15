@@ -7,7 +7,14 @@
     color:#fff ;
     transition: all ease .5s;
 }
+.NavContainer{
+    padding: 18px;
+    display:flex;
+    justify-content:space-between;
+    background-color:#6200ee;
 
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
 .active{
     color:#03dac5 !important;
 }
@@ -33,10 +40,10 @@
     background-color: #fff;
 }
 
-.userbtn{
+.userbtn {
     border: none;
-    padding: 15px;
-    font-size: 26px;
+    padding: 10px;
+    font-size: 34px;
     background-color: transparent;
     cursor: pointer;
     display: flex;

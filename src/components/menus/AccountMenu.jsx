@@ -1,82 +1,64 @@
-import * as React from 'react';
+import { useContextActions } from "../../context/ContextProvider";
+import { Link } from "react-router-dom";
+import styles from "./styles.module.css";
+import { FaPowerOff } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
+import { AiOutlineSetting } from "react-icons/ai";
+import { BsHouseDoor } from "react-icons/bs";
+import { useEffect, useRef } from "react";
+import {
+  ShowAccountMenuChange,
+} from "../../context/globalProvider/globalProvider";
+import ToggleMenu from "./ToggleMenu";
 
-import { Box, Button, ButtonBase, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Typography } from '@material-ui/core';
-import { useContextActions } from '../../context/ContextProvider';
-import { Link } from 'react-router-dom';
-
-export default function AccountMenu({open,setOpen}) {
-    const dispatch = useContextActions()
-  const anchorRef = React.useRef(null);
-
-  const handleToggle = () => {
-      
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
-    setOpen(false);
-  };
+export default function AccountMenu({usericon,close}) {
+  const dispatch = useContextActions();
   const handleLogout = () => {
-    dispatch({type:'set_loading',payload:true})
-    setOpen(false);
-    dispatch({type:"logut_user"})
-    dispatch({type:'set_loading',payload:false})
+    dispatch({ type: "set_loading", payload: true });
+    dispatch({ type: "logut_user" });
+    dispatch({ type: "set_loading", payload: false });
   };
-
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
-
   return (
-    <Box  spacing={2} style={{zIndex:"100",position:"absolute",top:"75px",left:"30px",width:"250px"}}>
-      <Paper>
-      <ClickAwayListener onClickAway={handleClose}>
-        <MenuList style={{flexDirection:"column"}}>
-          <MenuItem style={{placeContent:"center"}}>
-            <Typography variant='subtitle2'>
-              <Link to='/admin'>
-              پروفایل
-              </Link>
-            </Typography>
-          </MenuItem>
-          <MenuItem style={{placeContent:"center"}}>
-            <Typography variant='subtitle2'>
-              سبد خرید
-            </Typography>
-          </MenuItem>
-          <MenuItem style={{placeContent:"center"}} onClick={handleLogout}>
-              <Button variant='outlined' color='secondary' fullWidth>
-                <Typography variant='subtitle2'>
-                  خروج
-                </Typography>
-              </Button>
-          </MenuItem>
-        </MenuList>
+      <ToggleMenu iconRef={usericon} close={close}>
+        <ul className={styles.usermenulistitem}>
+          <li style={{ placeContent: "center" }}>
+            <Link to="/admin">
+              <button
+                className={`${styles.button} ${styles.userbtn} ${styles.infobtn}`}
+              >
+                <span className={styles.icon}>
+                  <FaUserCircle />
+                </span>
+                <div className={styles.info}>
+                  <span>مجتبی دارابی</span>
+                  <span>mjdarabu@gmail.com</span>
+                </div>
+              </button>
+            </Link>
+          </li>
 
-      </ClickAwayListener>
-      </Paper>
-      <div >
-
-        <Box
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          placement="bottom-start"
-          transition
-          disablePortal
-
-        >
-        </Box>
-      </div>
-    </Box>
+          <li>
+            <button
+              className={`${styles.button} ${styles.userbtn} ${styles.normalbtn}`}
+            >
+              <BsHouseDoor />
+              پنل کاربری
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${styles.button} ${styles.userbtn} ${styles.normalbtn}`}
+            >
+              <AiOutlineSetting />
+              تنظیمات
+            </button>
+          </li>
+          <li onClick={handleLogout}>
+            <button className={`${styles.button} ${styles.exitbtn}`}>
+              <FaPowerOff />
+            </button>
+          </li>
+        </ul>
+      </ToggleMenu>
   );
 }

@@ -9,6 +9,7 @@ import http from "../Services/httpServices";
 import { getUserFromDb, loginUser, registerUser } from "../Services/user";
 import {  toast } from 'react-toastify';
 import { createBrowserHistory } from 'history';
+import { ShowAccountMenuChange } from "./globalProvider/globalProvider";
 
 const initialState={
   user:{
@@ -19,8 +20,8 @@ const initialState={
   loading:false
 }
 const Reducer = (state, action) => {
-  
-  
+  const {changeAccountMenuShow} = ShowAccountMenuChange()
+  changeAccountMenuShow(false)
   switch (action.type) {
     case 'SET_ALLPRODUCTS':
       return {...state,allproducts:action.data}

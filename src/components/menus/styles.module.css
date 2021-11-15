@@ -1,0 +1,199 @@
+.usermenucontainer{
+    position: absolute;
+    top: 80px;
+    left: 25px;
+    padding: 15px;
+    box-shadow:
+    0 10px 27px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+.cartmenulistitem{
+    width: 400px;
+    max-height: 337px;
+    overflow-y: auto;
+    display: block;
+}
+.infoContainer{
+    width: 40%;
+    word-wrap: break-word;
+    opacity: .7;
+}
+
+.producttitle{
+    text-align: start;
+    margin: 2px;
+}
+.countContainer{
+    display: flex;
+    justify-content: start;
+}
+.countContainer button{
+    background-color: transparent;
+    padding-inline-end: 2px;
+    display: flex;
+    color: crimson;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+.countContainer button svg{
+    margin: 0;
+}
+.flexContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+
+.priceContainer{
+    margin: auto;
+    margin-left: 0;
+
+}
+.priceContainer :nth-child(1){
+    text-decoration: line-through ;
+}
+.priceContainer :nth-child(2){
+    color: red;
+
+}
+.imagecontainer{
+    width: 100px;
+    height: 100px;
+    
+}
+.imagecontainer img{
+    width: 100%;
+
+}
+.usermenulistitem{
+
+    flex-direction: column;
+    justify-content: center;
+}
+.infobtn span{
+    padding: 2px 5px;
+}
+.infobtn span:nth-child(2){
+    opacity: .7;
+    display: block;
+}
+.normalbtn{
+    justify-content: start !important;
+}
+.normalbtn svg{
+    margin: 2px 8px;
+}
+.icon{
+    font-size: 4rem;
+    display: flex;
+}
+.info{
+    display: block;
+    text-align: start;
+}
+.usermenulistitem li{
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    margin: auto;
+}
+.exitbtn{
+    background-color: #ff2d55;
+    color:#fff;
+    transition: all ease-in-out .4s;
+}
+.exitbtn:hover{
+    background-color: #ec1e44;
+}
+.buybtn{
+    background-color: #68E1FD;
+    color:black;
+    transition: all ease-in-out .4s;
+    margin-top: 14px !important;
+}
+.exitbtn:hover{
+    background-color: #3ed9fc;
+}
+.userbtn{
+    color: black;
+    background-color: #fff;
+    padding: 3px 12px !important;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.button{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+    margin: 8px auto;
+    padding: 10px 36px;
+    border: none;
+    border-radius: 8px;
+    font-size: 24px;
+}
+.cartrow{
+    justify-content: start;
+    margin: 8px auto;
+    padding: 10px 36px;
+    border: none;
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 24px;
+}
+.imagecontainer img{
+    border-radius: 50%;
+}
+
+@media screen and (max-width : 417px){
+ 
+    .infobtn{
+        display: block !important;
+        text-align: center !important;
+        justify-content: center !important;
+        place-content: center !important;
+    }
+    .info{
+        display: block;
+        text-align: center;
+    }
+    .icon{
+        justify-content: center;
+    }
+    .button , .cartrow{
+        font-size:12px;
+        margin: 3px auto;
+    }
+    .normalbtn svg{
+        margin: 2px 0 2px 4px;
+    }
+    
+}
+@media screen and (max-width : 475px){
+    .cartmenulistitem{
+        width: 200px;
+        display: block;
+        max-height: 200px;
+    }
+    .usermenulistitem li{
+        width: 100%;
+        font-size: 15px;
+        text-align: center;
+        margin: auto;
+    }
+    .priceContainer{
+        font-size: 15px;
+    }
+    .imagecontainer{
+        width: 50px;
+        height: 50px;
+    }
+    .countContainer span{
+
+        margin: auto 5px !important;
+    }
+
+
+}

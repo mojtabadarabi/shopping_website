@@ -7,6 +7,7 @@ import { useContextActions, useContextValue } from '../../context/ContextProvide
 import Loading from '../loading/Loading'
 import { getUserFromDb } from '../../Services/user'
 import { getAllProducts } from '../../Services/products'
+import { GlobalState } from '../../context/globalProvider/globalProvider'
 
 function MainLayout({children}) {
     const classes = useStyle()
@@ -16,7 +17,6 @@ function MainLayout({children}) {
     useEffect(async() => {
         setloadingPage(state.loading)
     }, [loadingPage])
-
     useEffect(async() => {
         dispatch({type:"set_loading",payload:true})
         const localUser = localStorage.getItem('user')
