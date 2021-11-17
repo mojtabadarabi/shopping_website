@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-axios.defaults.baseURL="http://localhost:3001"
+axios.defaults.baseURL="https://shopping-7941a-default-rtdb.firebaseio.com/"
 
 axios.defaults.headers.post["Content-Type"] = "application/json";
 

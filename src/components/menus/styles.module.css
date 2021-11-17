@@ -90,6 +90,11 @@
     font-size: 4rem;
     display: flex;
 }
+.icon img{
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+}
 .info{
     display: block;
     text-align: start;

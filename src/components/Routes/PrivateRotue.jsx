@@ -6,16 +6,8 @@ import { getUserFromDb } from '../../Services/user';
 const PrivateRoute = ({component: Component, ...rest}) => {
 
     const isLogin=async()=>{
-        const userReq=JSON.parse(localStorage.getItem('user'))
-        if(userReq!==null){
-          try {
-            const data = await getUserFromDb(userReq.user[0])
-            return true
-          } catch (error) {
-            console.log(error)
-            return false
-          }
-        }
+        const token=JSON.parse(localStorage.getItem('access_token'))
+        console.log(token)
         
     }
 

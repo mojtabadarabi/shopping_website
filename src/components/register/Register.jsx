@@ -7,26 +7,36 @@ import { useContextActions } from '../../context/ContextProvider'
 import { toast } from 'react-toastify'
 import { withRouter } from 'react-router'
 import { registerUser } from '../../Services/user'
-
+import { useAuth } from '../../context/AuthContext'
+import {auth} from '../../firebase.js'
 function Register({history}) {
         const classes = useStyle()
         const dispatch = useContextActions()
+        const { signup } = useAuth()
         const [user, setuser] = useState({name:'',userName:'',phone:'',password:''})
         async function submitRegisterHandler(e) {
             e.preventDefault()
             if(user.name!==''&&user.name!==' '&&user.userName!==''&&user.userName!==' '&&user.phone!==''&&user.phone!==' '&&user.password!==''&&user.password!==' '){
                 dispatch({type:'set_loading',payload:true})
-                const userInfo= await registerUser(user)
-                if (userInfo) {
+                try {
+                    await signup(user.userName,user.password)
+                    .then(function(result) {
+                        result.user.updateProfile({
+                          displayName:user.name
+                        })
+                      }).catch(function(error) {
+                        console.log(error);
+                      });
+                      console.log(auth.currentUser)
                     dispatch({type:'set_loading',payload:false})
                     toast.success('با موفقیت ثبت نام شدید')
                     history.push('/login')
                     setuser({name:'',userName:'',phone:'',password:''})
-                }
-                else{
+                  } catch (err){
+                    console.log(err)
+                    toast.error('ایمیل توسط شخص دیگری استفاده شده')
                     dispatch({type:'set_loading',payload:false})
-                    toast(userInfo)
-                }
+                  }
             }
             else{
                 toast.error('لطفا فیلد ها را با دقت پر کنید')

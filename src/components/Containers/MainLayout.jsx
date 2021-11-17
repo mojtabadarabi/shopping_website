@@ -8,6 +8,7 @@ import Loading from '../loading/Loading'
 import { getUserFromDb } from '../../Services/user'
 import { getAllProducts } from '../../Services/products'
 import { GlobalState } from '../../context/globalProvider/globalProvider'
+import {auth} from '../../firebase.js'
 
 function MainLayout({children}) {
     const classes = useStyle()
@@ -19,27 +20,10 @@ function MainLayout({children}) {
     }, [loadingPage])
     useEffect(async() => {
         dispatch({type:"set_loading",payload:true})
-        const localUser = localStorage.getItem('user')
-        if (localUser) {
-            const userReq = JSON.parse(localStorage.getItem('user')).user[0]
-            if(Object.keys(state.user.info).length === 0){
-                try {
-                    const data = await getUserFromDb(userReq)
-                    console.log(data)
-                    dispatch({type:"login_user",payload:data})
-                } catch (error) {
-                    console.log(error)
-                }
-            }
+        if (auth.currentUser) {
+            dispatch({type:"login_user",payload:auth.currentUser._delegate})
         }
-        if(!state.allproducts){
-            try {
-                const {data} = await getAllProducts()
-                dispatch({type:"SET_ALLPRODUCTS",data})
-            } catch (error) {
-                console.log(error)
-            }
-        }
+        console.log(auth.currentUser)
         dispatch({type:"set_loading",payload:false})
     }, [])
 

@@ -11,8 +11,9 @@ function AllProducts() {
     const dispatch = useContextActions()
     const [allproducts, setallproducts] = useState(null)
     async function fetch() {
-        const {data}=await getAllProducts()
-        setallproducts(data)
+        // const {data}=await getAllProducts()
+        getAllProducts()
+        setallproducts([])
     }
     useEffect(() => {
         fetch()

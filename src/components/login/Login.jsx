@@ -7,28 +7,30 @@ import { useContextActions, useContextValue } from '../../context/ContextProvide
 import { withRouter } from 'react-router'
 import { toast } from 'react-toastify'
 import { loginUser, registerUser } from '../../Services/user'
+import { useAuth } from '../../context/AuthContext'
+import {db} from '../../firebase.js'
+import { getAuth } from "firebase/auth";
 
 function Login({history}) {
+        const auth = getAuth();
         const classes = useStyle()
+        const { login ,signUpWithGoogle} = useAuth()
         const dispatch = useContextActions()
         const [user, setuser] = useState({userName:'',password:''})
         async function submitLoginHandler(e) {
             e.preventDefault()
             if(user.name!==''&&user.name!==' '&&user.userName!==''&&user.userName!==' '&&user.phone!==''&&user.phone!==' '&&user.password!==''&&user.password!==' '){
                 dispatch({type:'set_loading',payload:true})
-                const userInfo= await loginUser(user)
-                if (typeof userInfo!=='string') {
-                    dispatch({type:'login_user',payload:userInfo})
+                try {
+                    const userReq = await login(user.userName,user.password)
+                    dispatch({type:'login_user',payload:userReq.user._delegate})
                     history.push('/')
-                    setuser({name:'',userName:'',phone:'',password:''})
+                    dispatch({type:'set_loading',payload:false})  
+                    toast.success('با موفقیت وارد شدید')        
+                } catch (error) {
+                    console.log(error)
                     dispatch({type:'set_loading',payload:false})
-                    toast.success('با موفقیت وارد شدید')
                 }
-                else{
-                    dispatch({type:'set_loading',payload:false})
-                    toast(userInfo)
-                }
-                    
             }
             else{
                 toast.error('لطفا فیلد ها را با دقت پر کنید')
@@ -36,6 +38,13 @@ function Login({history}) {
         }
         function setState(e) {
             setuser({...user,[e.target.name]:e.target.value})
+        }
+        async function handleLoginWithGoogle(){
+            const {user} = await signUpWithGoogle()
+            console.log(user)
+            dispatch({type:'login_user',payload:user})
+            history.push('/')
+            toast.success('با موفقیت وارد شدید') 
         }
         return (
             <form className={classes.formContainer} onSubmit={(e)=>submitLoginHandler(e)}>
@@ -53,6 +62,7 @@ function Login({history}) {
                </Typography>
                 <input className={classes.inputTxt} value={user.userName} name='userName' onChange={(e)=>setState(e)} spellCheck='false' type="text"placeholder='نام کاربری یا ایمیل' />
                 <input className={classes.inputTxt} value={user.password} name='password' onChange={(e)=>setState(e)} type="password"placeholder='رمز عبور' />
+                <button className={classes.submitBtn} onClick={handleLoginWithGoogle}>ورود با جیمیل</button>
                 <button className={classes.submitBtn} type="submit">ورود</button>
             </form>
         )

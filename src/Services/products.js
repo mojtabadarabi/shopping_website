@@ -1,7 +1,32 @@
 import http from "./httpServices"
+import firebasedb from '../firebase.js'
+import { doc, getDoc } from "firebase/firestore";
+import firebase from 'firebase/compat/app';
 
 export const getAllProducts = (async()=>{
-    return await http.get('/allproducts')
+        const db = firebase.firestore();
+        // return db.collection('products').onSnapshot((snapshot) => {
+        //     console.log(snapshot)
+        // snapshot.forEach((doc) => console.log(doc));
+        // });
+        const response=db.collection('Blogs');
+        const data=await response.get();
+        data.docs.forEach(item=>{
+            console.log(item)
+           })
+        
+        // db.database().ref('/products').on('value', querySnapShot => {
+        //     console.log(querySnapShot.val())
+        //   });
+		// .collection('products')
+		// .orderBy('createdAt', 'desc')
+		// .get()
+		// .then((data) => {
+		// 	console.log(data)
+		// })
+		// .catch((err) => {
+		// 	console.error(err);
+		// });
     
 })
 export const createProduct = ((product)=>{

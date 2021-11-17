@@ -10,10 +10,14 @@ import {
   ShowAccountMenuChange,
 } from "../../context/globalProvider/globalProvider";
 import ToggleMenu from "./ToggleMenu";
+import { useAuth } from "../../context/AuthContext";
+import { auth } from "../../firebase.js";
 
 export default function AccountMenu({usericon,close}) {
   const dispatch = useContextActions();
-  const handleLogout = () => {
+  const { currentUser } = useAuth()
+  const {displayName,email,photoURL} = currentUser._delegate
+  const handleLogout = async() => {
     dispatch({ type: "set_loading", payload: true });
     dispatch({ type: "logut_user" });
     dispatch({ type: "set_loading", payload: false });
@@ -27,11 +31,15 @@ export default function AccountMenu({usericon,close}) {
                 className={`${styles.button} ${styles.userbtn} ${styles.infobtn}`}
               >
                 <span className={styles.icon}>
-                  <FaUserCircle />
+                  {
+                    !photoURL?<FaUserCircle />:(
+                      <img src={photoURL} alt="avatar" />
+                    )
+                  }
                 </span>
                 <div className={styles.info}>
-                  <span>مجتبی دارابی</span>
-                  <span>mjdarabu@gmail.com</span>
+                  <span>{displayName}</span>
+                  <span>{email}</span>
                 </div>
               </button>
             </Link>

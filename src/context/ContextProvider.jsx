@@ -10,6 +10,7 @@ import { getUserFromDb, loginUser, registerUser } from "../Services/user";
 import {  toast } from 'react-toastify';
 import { createBrowserHistory } from 'history';
 import { ShowAccountMenuChange } from "./globalProvider/globalProvider";
+import {auth} from '../firebase.js'
 
 const initialState={
   user:{
@@ -26,10 +27,20 @@ const Reducer = (state, action) => {
     case 'SET_ALLPRODUCTS':
       return {...state,allproducts:action.data}
       case 'login_user':
-        localStorage.setItem('user',JSON.stringify({token:'da6f465ad4f5a4dfadf45a4df',user:[action.payload]}))
+        console.log(action)
+        const user = {
+          id:action.payload.uid,
+          name:action.payload.displayName,
+          avatar:action.payload.photoURL,
+          phone_number:action.payload.phoneNumber,
+          email:action.payload.email,
+        }
+        
+        localStorage.setItem('user',JSON.stringify(user))
+        localStorage.setItem('access_token',JSON.stringify(action.payload.accessToken))
       return {...state,user:{info:action.payload,isAuth:true}}
     case 'logut_user':
-      console.log(action)
+      auth.signOut()
       localStorage.clear()
       return {...state,user:{info:{},isAuth:false}}
     case 'set_loading':
@@ -46,11 +57,9 @@ const Reducer = (state, action) => {
   function ContextProvider({ children }) {
   const [state, dispatch] = useReducer(Reducer, initialState);
   useEffect(async() => {
-    const userReq=JSON.parse(localStorage.getItem('user'))
-    if(userReq!==null){
+    if(auth.currentUser){
       try {
-        const data = await getUserFromDb(userReq.user[0])
-        dispatch({type:'login_user',payload:data})
+        dispatch({type:'login_user',payload:auth.currentUser._delegate})
       } catch (error) {
         dispatch({type:'logut_user'})
         console.log(error)

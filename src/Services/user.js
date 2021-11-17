@@ -2,10 +2,11 @@ import { toast } from "react-toastify"
 import http from "./httpServices"
 
 export const registerUser = (async(user)=>{
-    const findedUser = await existUser(user)
-    if (!findedUser) {
+    // const findedUser = await existUser(user)
+    // if (!findedUser) {
         try {
-            const response = await http.post('/users',user)
+            const response = await http.post('/users.json',JSON.stringify(user))
+            console.log(response)
             if (response.status===201) {
                 return true
             }
@@ -13,11 +14,11 @@ export const registerUser = (async(user)=>{
             console.log(error)
             return false
         }
-    }
-    else{
-        toast.error(findedUser)
-        return false
-    }
+    // }
+    // else{
+    //     toast.error(findedUser)
+    //     return false
+    // }
 })
 export const getAllUser = async()=>{
     return await http.get('/users')
